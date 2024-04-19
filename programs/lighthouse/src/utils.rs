@@ -10,8 +10,7 @@ use solana_program::{
     program::{invoke, invoke_signed},
     program_error::ProgramError,
     program_memory::sol_memcmp,
-    pubkey::Pubkey,
-    pubkey::PUBKEY_BYTES,
+    pubkey::{Pubkey, PUBKEY_BYTES},
     rent::Rent,
     system_instruction, system_program,
 };

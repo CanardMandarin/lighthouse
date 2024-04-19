@@ -25,14 +25,6 @@ impl<'a, 'info> AssertTokenAccountContext<'a, 'info> {
     }
 }
 
-pub(crate) fn assert_token_account<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug>(
-    ctx: AssertTokenAccountContext<'a, 'info>,
-    assertion: &T,
-    log_level: LogLevel,
-) -> Result<()> {
-    assertion.evaluate(ctx.token_account, log_level)
-}
-
 pub(crate) fn assert_token_account_multi<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug>(
     ctx: AssertTokenAccountContext<'a, 'info>,
     assertions: &[T],

@@ -3,7 +3,7 @@ use crate::{
     utils::Result,
     validation::{CheckedAccount, Program, SplAccountCompressionProgram},
 };
-use solana_program::{account_info::next_account_info, account_info::AccountInfo};
+use solana_program::account_info::{next_account_info, AccountInfo};
 use std::slice::Iter;
 
 pub(crate) struct AssertMerkleTreeAccountContext<'a, 'info> {

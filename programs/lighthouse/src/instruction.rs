@@ -38,31 +38,16 @@ pub(crate) enum LighthouseInstruction {
     AssertAccountDelta { log_level: LogLevel, assertion: AccountDeltaAssertion },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertAccountInfo { log_level: LogLevel, assertion: AccountInfoAssertion },
-
-    #[account(0, name = "target_account", desc = "Target account to be asserted")]
     AssertAccountInfoMulti { log_level: LogLevel, assertions: Vec<AccountInfoAssertion> },
-
-    #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertMintAccount { log_level: LogLevel, assertion: MintAccountAssertion },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
     AssertMintAccountMulti { log_level: LogLevel, assertions: Vec<MintAccountAssertion> },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertTokenAccount { log_level: LogLevel, assertion: TokenAccountAssertion },
-
-    #[account(0, name = "target_account", desc = "Target account to be asserted")]
     AssertTokenAccountMulti { log_level: LogLevel, assertions: Vec<TokenAccountAssertion> },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertStakeAccount { log_level: LogLevel, assertion: StakeAccountAssertion },
-
-    #[account(0, name = "target_account", desc = "Target account to be asserted")]
     AssertStakeAccountMulti { log_level: LogLevel, assertions: Vec<StakeAccountAssertion> },
-
-    #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertUpgradeableLoaderAccount { log_level: LogLevel, assertion: UpgradeableLoaderStateAssertion },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
     AssertUpgradeableLoaderAccountMulti { log_level: LogLevel, assertions: Vec<UpgradeableLoaderStateAssertion> },
@@ -87,17 +72,10 @@ impl LighthouseInstruction {
             LighthouseInstruction::MemoryClose { .. } => "MemoryClose",
             LighthouseInstruction::AssertAccountData { .. } => "AssertAccountData",
             LighthouseInstruction::AssertAccountDelta { .. } => "AssertAccountDelta",
-            LighthouseInstruction::AssertAccountInfo { .. } => "AssertAccountInfo",
             LighthouseInstruction::AssertAccountInfoMulti { .. } => "AssertAccountInfoMulti",
-            LighthouseInstruction::AssertMintAccount { .. } => "AssertMintAccount",
             LighthouseInstruction::AssertMintAccountMulti { .. } => "AssertMintAccountMulti",
-            LighthouseInstruction::AssertTokenAccount { .. } => "AssertTokenAccount",
             LighthouseInstruction::AssertTokenAccountMulti { .. } => "AssertTokenAccountMulti",
-            LighthouseInstruction::AssertStakeAccount { .. } => "AssertStakeAccount",
             LighthouseInstruction::AssertStakeAccountMulti { .. } => "AssertStakeAccountMulti",
-            LighthouseInstruction::AssertUpgradeableLoaderAccount { .. } => {
-                "AssertUpgradeableLoaderAccount"
-            }
             LighthouseInstruction::AssertUpgradeableLoaderAccountMulti { .. } => {
                 "AssertUpgradeableLoaderAccountMulti"
             }
@@ -115,15 +93,10 @@ impl LighthouseInstruction {
             LighthouseInstruction::MemoryClose { .. } => LogLevel::Silent,
             LighthouseInstruction::AssertAccountData { log_level, .. } => *log_level,
             LighthouseInstruction::AssertAccountDelta { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertAccountInfo { log_level, .. } => *log_level,
             LighthouseInstruction::AssertAccountInfoMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertMintAccount { log_level, .. } => *log_level,
             LighthouseInstruction::AssertMintAccountMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertTokenAccount { log_level, .. } => *log_level,
             LighthouseInstruction::AssertTokenAccountMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertStakeAccount { log_level, .. } => *log_level,
             LighthouseInstruction::AssertStakeAccountMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertUpgradeableLoaderAccount { log_level, .. } => *log_level,
             LighthouseInstruction::AssertUpgradeableLoaderAccountMulti { log_level, .. } => {
                 *log_level
             }

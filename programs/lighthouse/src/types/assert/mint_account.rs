@@ -1,10 +1,10 @@
 use super::{Assert, LogLevel};
 use crate::{
     err, err_msg,
+    error::LighthouseError,
     types::assert::evaluate::{EquatableOperator, Evaluate, IntegerOperator},
-    utils::{keys_equal, Result},
+    utils::{keys_equal, unpack_coption_key, Result},
 };
-use crate::{error::LighthouseError, utils::unpack_coption_key};
 use borsh::{BorshDeserialize, BorshSerialize};
 use solana_program::{account_info::AccountInfo, pubkey::Pubkey};
 

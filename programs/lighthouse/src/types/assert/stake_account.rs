@@ -1,10 +1,13 @@
 use super::{Assert, LogLevel};
-use crate::types::assert::evaluate::{EquatableOperator, Evaluate, IntegerOperator};
-use crate::utils::Result;
-use crate::{err, err_msg, error::LighthouseError};
+use crate::{
+    err, err_msg,
+    error::LighthouseError,
+    types::assert::evaluate::{EquatableOperator, Evaluate, IntegerOperator},
+    utils::Result,
+};
 use borsh::{BorshDeserialize, BorshSerialize};
-use solana_program::msg;
 use solana_program::{
+    msg,
     pubkey::Pubkey,
     stake::state::{Meta as StakeMeta, Stake as StakeInfo, StakeStateV2},
 };

@@ -4,7 +4,7 @@ use crate::{
     utils::{keys_equal, Result},
     validation::MPL_BUBBLEGUM_ID,
 };
-use solana_program::{account_info::next_account_info, account_info::AccountInfo};
+use solana_program::account_info::{next_account_info, AccountInfo};
 use std::slice::Iter;
 
 #[derive(Clone)]

@@ -27,22 +27,6 @@ impl<'a, 'info> AssertStakeAccountContext<'a, 'info> {
     }
 }
 
-pub(crate) fn assert_stake_account<'a, 'info, T: for<'b> Assert<&'b StakeStateV2> + Debug>(
-    ctx: AssertStakeAccountContext<'a, 'info>,
-    assertion: T,
-    log_level: LogLevel,
-) -> Result<()> {
-    let data = ctx
-        .stake_account
-        .try_borrow_data()
-        .map_err(LighthouseError::failed_borrow_err)?;
-
-    let stake_account =
-        StakeStateV2::deserialize(&mut data.as_ref()).map_err(LighthouseError::stake_deser_err)?;
-
-    assertion.evaluate(&stake_account, log_level)
-}
-
 pub(crate) fn assert_stake_account_multi<'a, 'info, T: for<'b> Assert<&'b StakeStateV2> + Debug>(
     ctx: AssertStakeAccountContext<'a, 'info>,
     assertions: &[T],

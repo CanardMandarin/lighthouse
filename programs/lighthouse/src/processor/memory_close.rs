@@ -1,7 +1,9 @@
-use crate::utils::{close, Result};
-use crate::validation::{
-    AccountValidation, CheckedAccount, DerivedAddress, LighthouseProgram, Memory, MemorySeeds,
-    Program, Signer,
+use crate::{
+    utils::{close, Result},
+    validation::{
+        AccountValidation, CheckedAccount, DerivedAddress, LighthouseProgram, Memory, MemorySeeds,
+        Program, Signer,
+    },
 };
 use solana_program::account_info::{next_account_info, AccountInfo};
 use std::slice::Iter;

@@ -32,28 +32,6 @@ impl<'a, 'info> AssertUpgradeableLoaderStateContext<'a, 'info> {
     }
 }
 
-pub(crate) fn assert_upgradeable_loader_state<
-    'a,
-    'info,
-    T: for<'b> Assert<&'b UpgradeableLoaderState> + Debug,
->(
-    ctx: AssertUpgradeableLoaderStateContext<'a, 'info>,
-    assertion: &T,
-    log_level: LogLevel,
-) -> Result<()> {
-    let data = ctx
-        .upgradeable_loader_account
-        .try_borrow_data()
-        .map_err(LighthouseError::failed_borrow_err)?;
-
-    let state: UpgradeableLoaderState = bincode::deserialize(&data).map_err(|e| {
-        err_msg!("Failed to deserialize upgradeable loader state", e);
-        err!(LighthouseError::AccountBorrowFailed)
-    })?;
-
-    assertion.evaluate(&state, log_level)
-}
-
 pub(crate) fn assert_upgradeable_loader_state_multi<
     'a,
     'info,

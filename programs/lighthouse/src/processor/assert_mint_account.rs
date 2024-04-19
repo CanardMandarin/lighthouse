@@ -25,14 +25,6 @@ impl<'a, 'info> AssertMintAccountContext<'a, 'info> {
     }
 }
 
-pub(crate) fn assert_mint_account<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug>(
-    ctx: AssertMintAccountContext<'a, 'info>,
-    assertion: &T,
-    log_level: LogLevel,
-) -> Result<()> {
-    assertion.evaluate(ctx.mint_account, log_level)
-}
-
 pub(crate) fn assert_mint_account_multi<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug>(
     ctx: AssertMintAccountContext<'a, 'info>,
     assertions: &[T],
