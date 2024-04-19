@@ -87,35 +87,35 @@ pub mod lighthouse {
                 let ctx = AssertAccountDeltaContext::load(&mut accounts.iter())?;
                 processor::assert_account_delta(&ctx, &assertion, log_level)?;
             }
-            LighthouseInstruction::AssertAccountInfoMulti {
+            LighthouseInstruction::AssertAccountInfo {
                 log_level,
                 assertions,
             } => {
                 let ctx = AssertTargetAccountContext::load(&mut accounts.iter())?;
                 processor::assert_target_account_multi(ctx, &assertions, log_level)?;
             }
-            LighthouseInstruction::AssertMintAccountMulti {
+            LighthouseInstruction::AssertMintAccount {
                 log_level,
                 assertions,
             } => {
                 let ctx = AssertMintAccountContext::load(&mut accounts.iter())?;
                 processor::assert_mint_account_multi(ctx, &assertions, log_level)?;
             }
-            LighthouseInstruction::AssertTokenAccountMulti {
+            LighthouseInstruction::AssertTokenAccount {
                 log_level,
                 assertions,
             } => {
                 let ctx = AssertTokenAccountContext::load(&mut accounts.iter())?;
                 processor::assert_token_account_multi(ctx, &assertions, log_level)?;
             }
-            LighthouseInstruction::AssertStakeAccountMulti {
+            LighthouseInstruction::AssertStakeAccount {
                 log_level,
                 assertions,
             } => {
                 let ctx = AssertStakeAccountContext::load(&mut accounts.iter())?;
                 processor::assert_stake_account_multi(ctx, &assertions, log_level)?
             }
-            LighthouseInstruction::AssertUpgradeableLoaderAccountMulti {
+            LighthouseInstruction::AssertUpgradeableLoaderAccount {
                 log_level,
                 assertions,
             } => {

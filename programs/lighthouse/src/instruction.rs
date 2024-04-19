@@ -38,19 +38,19 @@ pub(crate) enum LighthouseInstruction {
     AssertAccountDelta { log_level: LogLevel, assertion: AccountDeltaAssertion },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertAccountInfoMulti { log_level: LogLevel, assertions: Vec<AccountInfoAssertion> },
+    AssertAccountInfo { log_level: LogLevel, assertions: Vec<AccountInfoAssertion> },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertMintAccountMulti { log_level: LogLevel, assertions: Vec<MintAccountAssertion> },
+    AssertMintAccount { log_level: LogLevel, assertions: Vec<MintAccountAssertion> },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertTokenAccountMulti { log_level: LogLevel, assertions: Vec<TokenAccountAssertion> },
+    AssertTokenAccount { log_level: LogLevel, assertions: Vec<TokenAccountAssertion> },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertStakeAccountMulti { log_level: LogLevel, assertions: Vec<StakeAccountAssertion> },
+    AssertStakeAccount { log_level: LogLevel, assertions: Vec<StakeAccountAssertion> },
 
     #[account(0, name = "target_account", desc = "Target account to be asserted")]
-    AssertUpgradeableLoaderAccountMulti { log_level: LogLevel, assertions: Vec<UpgradeableLoaderStateAssertion> },
+    AssertUpgradeableLoaderAccount { log_level: LogLevel, assertions: Vec<UpgradeableLoaderStateAssertion> },
 
     // No accounts
     AssertSysvarClock { log_level : LogLevel, assertion: SysvarClockAssertion },
@@ -72,12 +72,12 @@ impl LighthouseInstruction {
             LighthouseInstruction::MemoryClose { .. } => "MemoryClose",
             LighthouseInstruction::AssertAccountData { .. } => "AssertAccountData",
             LighthouseInstruction::AssertAccountDelta { .. } => "AssertAccountDelta",
-            LighthouseInstruction::AssertAccountInfoMulti { .. } => "AssertAccountInfoMulti",
-            LighthouseInstruction::AssertMintAccountMulti { .. } => "AssertMintAccountMulti",
-            LighthouseInstruction::AssertTokenAccountMulti { .. } => "AssertTokenAccountMulti",
-            LighthouseInstruction::AssertStakeAccountMulti { .. } => "AssertStakeAccountMulti",
-            LighthouseInstruction::AssertUpgradeableLoaderAccountMulti { .. } => {
-                "AssertUpgradeableLoaderAccountMulti"
+            LighthouseInstruction::AssertAccountInfo { .. } => "AssertAccountInfo",
+            LighthouseInstruction::AssertMintAccount { .. } => "AssertMintAccount",
+            LighthouseInstruction::AssertTokenAccount { .. } => "AssertTokenAccount",
+            LighthouseInstruction::AssertStakeAccount { .. } => "AssertStakeAccount",
+            LighthouseInstruction::AssertUpgradeableLoaderAccount { .. } => {
+                "AssertUpgradeableLoaderAccount"
             }
             LighthouseInstruction::AssertSysvarClock { .. } => "AssertSysvarClock",
             LighthouseInstruction::AssertBubblegumTreeConfigAccount { .. } => {
@@ -93,11 +93,11 @@ impl LighthouseInstruction {
             LighthouseInstruction::MemoryClose { .. } => LogLevel::Silent,
             LighthouseInstruction::AssertAccountData { log_level, .. } => *log_level,
             LighthouseInstruction::AssertAccountDelta { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertAccountInfoMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertMintAccountMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertTokenAccountMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertStakeAccountMulti { log_level, .. } => *log_level,
-            LighthouseInstruction::AssertUpgradeableLoaderAccountMulti { log_level, .. } => {
+            LighthouseInstruction::AssertAccountInfo { log_level, .. } => *log_level,
+            LighthouseInstruction::AssertMintAccount { log_level, .. } => *log_level,
+            LighthouseInstruction::AssertTokenAccount { log_level, .. } => *log_level,
+            LighthouseInstruction::AssertStakeAccount { log_level, .. } => *log_level,
+            LighthouseInstruction::AssertUpgradeableLoaderAccount { log_level, .. } => {
                 *log_level
             }
             LighthouseInstruction::AssertBubblegumTreeConfigAccount { log_level, .. } => *log_level,
