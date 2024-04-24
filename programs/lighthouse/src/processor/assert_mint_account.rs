@@ -1,6 +1,6 @@
 use crate::{
     error::LighthouseError,
-    types::assert::{Assert, LogLevel},
+    types::assert::{Assert, Evaluator, LogLevel},
     utils::{keys_equal, Result},
 };
 use solana_program::account_info::{next_account_info, AccountInfo};
@@ -25,22 +25,22 @@ impl<'a, 'info> AssertMintAccountContext<'a, 'info> {
     }
 }
 
-pub(crate) fn assert_mint_account<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug>(
+pub(crate) fn assert_mint_account<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug + Evaluator>(
     ctx: AssertMintAccountContext<'a, 'info>,
     assertion: &T,
     log_level: LogLevel,
 ) -> Result<()> {
-    assertion.evaluate(ctx.mint_account, log_level)
+    assertion.evaluate2(ctx.mint_account, log_level)
 }
 
-pub(crate) fn assert_mint_account_multi<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug>(
+pub(crate) fn assert_mint_account_multi<'a, 'info, T: Assert<&'a AccountInfo<'info>> + Debug + Evaluator>(
     ctx: AssertMintAccountContext<'a, 'info>,
     assertions: &[T],
     log_level: LogLevel,
 ) -> Result<()> {
     for (i, assertion) in assertions.iter().enumerate() {
         assertion
-            .evaluate(ctx.mint_account, log_level)
+            .evaluate2(ctx.mint_account, log_level)
             .map_err(|e| LighthouseError::map_multi_err(e, i as u32))?;
     }
 
